@@ -1,4 +1,4 @@
-def job = pipelineJob('job1') {
+def job = job('job1') {
     displayName('job1')
     definition {
         cpsScm {
