@@ -1,4 +1,4 @@
-def job = pipelineJob(jobConfig['name']) {
+def job = pipelineJob('job1') {
     displayName('job1')
     definition {
         cpsScm {
@@ -6,22 +6,22 @@ def job = pipelineJob(jobConfig['name']) {
             scm {
                 git {
                     remote {
-                        url('${JOBS_REPOSITORY}')
+                        url('https://github.com/OdedViner/Jenkins-pipline.git')
                     }
                     extensions {
                         wipeOutWorkspace()
                     }
-                    branch('${JOBS_REPOSITORY_BRANCH}')
+                    branch('main')
                 }
             }
             scriptPath('jobs/pipelines/job1/Jenkinsfile')
         }
     }
-    parameters {
-        parameters.cluster_name_param delegate
-    }
-    environmentVariables {
-        keepSystemVariables(true)
-        keepBuildVariables(true)
-    }
+    // parameters {
+    //     parameters.cluster_name_param delegate
+    // }
+    // environmentVariables {
+    //     keepSystemVariables(true)
+    //     keepBuildVariables(true)
+    // }
 }
