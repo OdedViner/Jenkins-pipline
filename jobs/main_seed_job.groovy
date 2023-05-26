@@ -1,5 +1,5 @@
 def job = job('main-seed-job') {
-    displayName('Main Seed Job for DSL Jobs and Views')
+    displayName('Main Seed Job for DSL Jobs')
     parameters {
         stringParam('JOBS_REPOSITORY', 'https://github.com/OdedViner/Jenkins-pipline.git', 'Jobs Repository to clone')
         stringParam('JOBS_REPOSITORY_BRANCH', 'main', 'Name of branch from Jobs Repository to checkout')
