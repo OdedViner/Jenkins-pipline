@@ -1,18 +1,20 @@
 def job = job('job1') {
     displayName('job1')
-    cpsScm {
-        lightweight(lightweight = false)
-        scm {
-            git {
-                remote {
-                    url('https://github.com/OdedViner/Jenkins-pipline.git')
+    definition {
+        cpsScm {
+            lightweight(lightweight = false)
+            scm {
+                git {
+                    remote {
+                        url('${JOBS_REPOSITORY}')
+                    }
+                    extensions {
+                        wipeOutWorkspace()
+                    }
+                    branch('${JOBS_REPOSITORY_BRANCH}')
                 }
-                extensions {
-                    wipeOutWorkspace()
-                }
-                branch('main')
             }
+            scriptPath('https://github.com/OdedViner/Jenkins-pipline.git')
         }
-        scriptPath('jobs/pipelines/job1/Jenkinsfile')
-    }    
+  
 }
