@@ -8,7 +8,6 @@ pipeline {
             }
         }
         stage('Test') {
-            echo 'Testing..'
             steps {
                 script {
                     echo '******${params.HOURS}**********'                  
