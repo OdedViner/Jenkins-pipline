@@ -10,7 +10,10 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo ${params.HOURS}                  
+                    if (params.HOURS > 1){
+                        echo "123"
+                    }
+         
                 }
             }
         }
