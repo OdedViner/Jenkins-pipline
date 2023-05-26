@@ -10,8 +10,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
+                    if (params.HOURS == "11"){
+                        echo "oded viner"
+                    }
                     if (params.HOURS == "12"){
-                        echo "12ffff3"
+                        echo "oren viner"
                     }
          
                 }
