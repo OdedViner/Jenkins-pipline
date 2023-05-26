@@ -17,4 +17,5 @@ def job = pipelineJob('job1') {
             scriptPath('jobs/pipelines/job1/Jenkinsfile')
         }
   
+    }   
 }
