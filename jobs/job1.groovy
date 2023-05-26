@@ -17,5 +17,8 @@ def job = pipelineJob('job1 new') {
             scriptPath('jobs/pipelines/job1/Jenkinsfile')
         }
   
-    }   
+    }
+    parameters {
+        stringParam('HOURS', '12', 'Maximum running time of the cluster (in hours). Clusters older than this will be deleted. The minimum is 10 hours')
+    }
 }
