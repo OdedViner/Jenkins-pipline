@@ -1,4 +1,4 @@
-def job = job('job1') {
+def job = pipelineJob('job1') {
     displayName('job1')
     definition {
         cpsScm {
@@ -6,15 +6,15 @@ def job = job('job1') {
             scm {
                 git {
                     remote {
-                        url('${JOBS_REPOSITORY}')
+                        url('https://github.com/OdedViner/Jenkins-pipline.git')
                     }
                     extensions {
                         wipeOutWorkspace()
                     }
-                    branch('${JOBS_REPOSITORY_BRANCH}')
+                    branch('main')
                 }
             }
-            scriptPath('https://github.com/OdedViner/Jenkins-pipline.git')
+            scriptPath('jobs/pipelines/job1/Jenkinsfile')
         }
   
 }
