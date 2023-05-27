@@ -1,5 +1,4 @@
 import JobLib.parameters
-import JobLib.common
 
 def job = pipelineJob('job1 new') {
     displayName('job1 new')
@@ -22,6 +21,7 @@ def job = pipelineJob('job1 new') {
   
     }
     parameters {
-        stringParam('HOURS', '12', 'Maximum running time of the cluster (in hours). Clusters older than this will be deleted. The minimum is 10 hours')
+        stringParam('HOURS', '12', 'Maximum running time')
+        parameters.jobs_repository_params delegate
     }
 }
