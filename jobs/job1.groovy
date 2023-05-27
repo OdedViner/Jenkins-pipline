@@ -1,3 +1,5 @@
+@Library('pipeline-library') import org.foo.Point
+
 def job = pipelineJob('job1 new') {
     displayName('job1 new')
     definition {
