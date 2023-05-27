@@ -1,4 +1,4 @@
-import org.foo.Point
+import JobLib
 
 def job = pipelineJob('job1 new') {
     displayName('job1 new')
