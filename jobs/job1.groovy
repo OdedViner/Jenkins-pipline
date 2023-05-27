@@ -1,4 +1,4 @@
-import JobLib
+import ocsJobLib.common
 
 def job = pipelineJob('job1 new') {
     displayName('job1 new')
