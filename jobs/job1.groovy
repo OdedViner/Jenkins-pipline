@@ -1,5 +1,3 @@
-import JobLib.common
-
 def job = pipelineJob('job1 new') {
     displayName('job1 new')
     definition {
@@ -22,6 +20,5 @@ def job = pipelineJob('job1 new') {
     }
     parameters {
         stringParam('HOURS', '12', 'Maximum running time')
-        parameters.jobs_repository_params delegate
     }
 }
