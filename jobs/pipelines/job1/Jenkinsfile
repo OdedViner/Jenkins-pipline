@@ -27,6 +27,7 @@ pipeline {
                         parameters: []
          
                 }
+                echo "clusterValidationJobResult: ${clusterValidationJobResult.result}"
             }
         }
         stage('Deploy') {
