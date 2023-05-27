@@ -1,4 +1,6 @@
-def vars = [:]
+ libraries {
+     lib('pipeline-library')
+ }
 
 pipeline {
     agent any
@@ -18,7 +20,7 @@ pipeline {
                     if (params.HOURS == "12"){
                         echo "oren viner"
                     }
-                    loop(15)
+                    callLoop(15)
          
                 }
             }
