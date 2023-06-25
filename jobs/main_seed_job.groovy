@@ -40,3 +40,5 @@ org.jenkinsci.plugins.scriptsecurity.scripts.ScriptApproval.get().with { approva
     approval.preapproveAll()
     approval.save()
 }
+
+// https://souravatta.medium.com/create-jenkins-seedjob-using-job-dsl-script-ac337afd9986
