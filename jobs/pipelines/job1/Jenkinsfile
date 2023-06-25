@@ -17,14 +17,13 @@ pipeline {
                 script {
                     echo "HOURS123: ${params.HOURS}"
                     callLoop(15)
-                    // jobResult = build job: 'job2',
-                    //     propagate: false,
-                    //     parameters: [
-                    //         string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
-                    //     ]
-         
+                    jobResult = build job: 'job2',
+                        propagate: false,
+                        parameters: [
+                            string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
+                        ]
+                    echo "jobResult: ${jobResult.result}"
                 }
-                // echo "jobResult: ${jobResult.result}"
             }
         }
         stage('Deploy') {
