@@ -15,7 +15,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo "HOURS123: ${params.HOURS}"
+                    // echo "HOURS123: ${params.HOURS}"
+                    echo "HOURS123"
                     
                     // if (params.HOURS == "11"){
                     //     echo "oded viner"
