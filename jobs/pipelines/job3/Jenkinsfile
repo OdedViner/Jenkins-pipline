@@ -1,0 +1,27 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Build') {
+            agent {
+                node {
+                    label 'slave'
+                }
+            }
+            steps {
+                echo 'Building..'
+                script {
+                    sh 'pwd'
+                    sh 'ls -l'
+                    sh 'hostname'
+                }
+
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
