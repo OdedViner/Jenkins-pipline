@@ -25,6 +25,7 @@ pipeline {
                 echo 'Deploying....'
                 script {
                     echo "HOURS1234: ${params.HOURS}"
+                    sh 'hostname'
                 }
             }
         }
