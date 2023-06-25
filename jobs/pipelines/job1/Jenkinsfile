@@ -15,16 +15,20 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    if (params.HOURS == "11"){
-                        echo "oded viner"
-                    }
-                    if (params.HOURS == "12"){
-                        echo "oren viner"
-                    }
+                    echo "HOURS123: ${params.HOURS}"
+                    
+                    // if (params.HOURS == "11"){
+                    //     echo "oded viner"
+                    // }
+                    // if (params.HOURS == "12"){
+                    //     echo "oren viner"
+                    // }
                     callLoop(15)
                     jobResult = build job: 'job2',
                         propagate: false,
-                        parameters: []
+                        parameters: [
+                            string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
+                        ]
          
                 }
                 echo "jobResult: ${jobResult.result}"

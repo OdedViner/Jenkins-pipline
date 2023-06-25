@@ -1,0 +1,34 @@
+//https://www.jenkins.io/doc/book/pipeline/shared-libraries/
+//https://www.tutorialworks.com/jenkins-shared-library/
+@Library('pipeline-library') _
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building job2..'
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    if (params.HOURS == "11"){
+                        echo "oded viner"
+                    }
+                    if (params.HOURS == "12"){
+                        echo "oren viner"
+                    }
+                }
+                echo "jobResult: ${jobResult.result}"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
