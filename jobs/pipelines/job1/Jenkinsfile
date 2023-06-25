@@ -16,14 +16,6 @@ pipeline {
             steps {
                 script {
                     echo "HOURS123: ${params.HOURS}"
-                    echo "HOURS123"
-                    
-                    // if (params.HOURS == "11"){
-                    //     echo "oded viner"
-                    // }
-                    // if (params.HOURS == "12"){
-                    //     echo "oren viner"
-                    // }
                     callLoop(15)
                     // jobResult = build job: 'job2',
                     //     propagate: false,
@@ -32,7 +24,7 @@ pipeline {
                     //     ]
          
                 }
-                echo "jobResult: ${jobResult.result}"
+                // echo "jobResult: ${jobResult.result}"
             }
         }
         stage('Deploy') {

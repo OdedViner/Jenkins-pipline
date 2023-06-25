@@ -15,14 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    if (params.HOURS == "11"){
-                        echo "oded viner"
-                    }
-                    if (params.HOURS == "12"){
-                        echo "oren viner"
-                    }
-                }
-                echo "jobResult: ${jobResult.result}"
+                    echo "HOURS123: ${params.HOURS}"
             }
         }
         stage('Deploy') {
