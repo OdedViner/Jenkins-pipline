@@ -1,3 +1,5 @@
+@Library('pipeline-library') _
+
 pipeline {
     agent none
 
@@ -21,6 +23,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                script {
+                    echo "HOURS1234: ${params.HOURS}"
+                }
             }
         }
     }
