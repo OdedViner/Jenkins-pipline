@@ -24,7 +24,7 @@ def job = job('main-seed-job') {
             }
             runner("Run")
             steps {
-                shell('echo "Generating jobs."')
+                shell('echo "Generating jobs...."')
                 dsl {
                     external('${JOBS_PATH}')
                     additionalClasspath(['src/org/parameters', ].join('\n'))
