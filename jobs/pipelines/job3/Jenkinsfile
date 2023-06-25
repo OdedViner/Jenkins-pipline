@@ -21,6 +21,7 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent none
             steps {
                 echo 'Deploying....'
                 script {
