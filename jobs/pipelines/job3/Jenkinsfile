@@ -21,7 +21,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent none
+            agent {
+                node {
+                    label 'built-in'
+                }
+            }
             steps {
                 echo 'Deploying....'
                 script {
