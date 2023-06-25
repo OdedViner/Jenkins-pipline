@@ -22,12 +22,12 @@ pipeline {
                         echo "oren viner"
                     }
                     callLoop(15)
-                    clusterValidationJobResult = build job: 'job2',
+                    jobResult = build job: 'job2',
                         propagate: false,
                         parameters: []
          
                 }
-                echo "clusterValidationJobResult: ${clusterValidationJobResult.result}"
+                echo "jobResult: ${jobResult.result}"
             }
         }
         stage('Deploy') {
