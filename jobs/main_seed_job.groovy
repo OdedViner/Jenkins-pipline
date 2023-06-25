@@ -27,7 +27,7 @@ def job = job('main-seed-job') {
                 shell('echo "Generating jobs."')
                 dsl {
                     external('${JOBS_PATH}')
-                    additionalClasspath(['src/main/groovy', ].join('\n'))
+                    additionalClasspath(['src/org/parameters', ].join('\n'))
                     removeAction('IGNORE')
                 }
             }
