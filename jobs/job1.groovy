@@ -1,5 +1,5 @@
 def job = pipelineJob('job1 new') {
-    displayName('job1 new')
+    displayName('job1')
     definition {
         cpsScm {
             lightweight(lightweight = false)
