@@ -33,8 +33,8 @@ pipeline {
                     sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
                     def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws","${params.WEB_SERVER_NAME}")
                     echo "${data['ip_address']}"
-                    callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                    sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    // callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+                    // sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
                 }
             }
         }
@@ -42,6 +42,17 @@ pipeline {
             steps {
                 echo 'Deploying....'
             }
+        }
+    }
+    post {
+        always {
+            agent {
+                node {
+                    label 'slave'
+                }
+            }
+            callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+            sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
         }
     }
 }
