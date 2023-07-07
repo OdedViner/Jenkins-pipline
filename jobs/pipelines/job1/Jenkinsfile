@@ -23,6 +23,7 @@ pipeline {
                             string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
                         ]
                     echo "jobResult: ${jobResult.result}"
+                    sh "pwd"
                 }
             }
         }
