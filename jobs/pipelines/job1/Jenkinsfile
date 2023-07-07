@@ -22,18 +22,20 @@ pipeline {
                 script {
                     echo "HOURS123: ${params.HOURS}"
                     callLoop(15)
-                    // jobResult = build job: 'job2',
-                    //     propagate: false,
-                    //     parameters: [
-                    //         string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
-                    //     ]
-                    // echo "jobResult: ${jobResult.result}"
+                    jobResult = build job: 'job2',
+                        propagate: false,
+                        parameters: [
+                            string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
+                        ]
+                    echo "jobResult: ${jobResult.result}"
                     sh "pwd"
                     echo "envHome = ${env.HOME}"
-                    sh "mkdir ${env.HOME}/test1"
-                    sh "cp -R terraform/aws ${env.HOME}/test1"
-                    def data = callTerraform("${env.HOME}/test1/aws")
+                    sh "mkdir ${env.HOME}/test2"
+                    sh "cp -R terraform/aws ${env.HOME}/test2"
+                    def data = callTerraform('apply',"${env.HOME}/test2/aws")
                     echo "${data['ip_address']}"
+                    callTerraform('apply',"${env.HOME}/test2/aws")
+                    sh "rm -rf ${env.HOME}/test2"
                 }
             }
         }
