@@ -3,7 +3,7 @@ def call(tf_action, tf_workspace, web_name=null) {
     dir(tf_workspace){
         if (tf_action == 'apply') {
             sh "terraform init"
-            sh "terraform apply -var vm_name=${web_name}--auto-approve"
+            sh "terraform apply -var vm_name=${web_name} --auto-approve"
             data['ip_address'] = sh (
                 script: """terraform output PrivateIP | tr -d '"'""",
                 returnStdout: true
