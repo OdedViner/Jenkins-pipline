@@ -46,15 +46,11 @@ pipeline {
     }
     post {
         always {
-            agent {
-                node {
-                    label 'slave'
+            node("slave") {
+                script {
+                    callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+                    sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
                 }
-            }
-            script {
-                callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
-            }
         }
     }
 }
