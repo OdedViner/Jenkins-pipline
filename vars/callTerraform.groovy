@@ -1,11 +1,6 @@
-def call(
-  tf_action,
-  tf_workspace
-) {
-    if (tf_action == 'apply') {
-        sh "mkdir -p ${tf_workspace}"
-        sh "cp -R ${tf_source_dir}/* ${tf_workspace}"
+def call(tf_workspace) {
+    dir(tf_workspace){
+        sh "terraform init"
+        sh "terraform apply"
     }
-
-
 }

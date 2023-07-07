@@ -31,7 +31,8 @@ pipeline {
                     sh "pwd"
                     echo "envHome = ${env.HOME}"
                     sh "mkdir ${env.HOME}/test"
-                    sh "cp -R terraform/aws ${env.HOME}/test"
+                    sh "cp -R terraform/aws ${env.HOME}/test1"
+                    callTerraform("${env.HOME}/test1/aws")
                 }
             }
         }
