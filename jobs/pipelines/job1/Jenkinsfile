@@ -32,7 +32,8 @@ pipeline {
                     echo "envHome = ${env.HOME}"
                     sh "mkdir ${env.HOME}/test1"
                     sh "cp -R terraform/aws ${env.HOME}/test1"
-                    callTerraform("${env.HOME}/test1/aws")
+                    def data = callTerraform("${env.HOME}/test1/aws")
+                    echo "${data['ip_address']}"
                 }
             }
         }
