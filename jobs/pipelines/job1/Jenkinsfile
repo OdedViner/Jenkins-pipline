@@ -27,7 +27,7 @@ pipeline {
                     //     parameters: [
                     //         string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
                     //     ]
-                    echo "jobResult: ${jobResult.result}"
+                    // echo "jobResult: ${jobResult.result}"
                     sh "pwd"
                     echo "envHome = ${env.HOME}"
                     sh "mkdir ${env.HOME}/test"
