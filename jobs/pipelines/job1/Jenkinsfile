@@ -30,7 +30,7 @@ pipeline {
                     // echo "jobResult: ${jobResult.result}"
                     sh "pwd"
                     echo "envHome = ${env.HOME}"
-                    sh "mkdir ${env.HOME}/test"
+                    sh "mkdir ${env.HOME}/test1"
                     sh "cp -R terraform/aws ${env.HOME}/test1"
                     callTerraform("${env.HOME}/test1/aws")
                 }
