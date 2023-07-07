@@ -34,7 +34,7 @@ pipeline {
                     sh "cp -R terraform/aws ${env.HOME}/test2"
                     def data = callTerraform('apply',"${env.HOME}/test2/aws")
                     echo "${data['ip_address']}"
-                    callTerraform('apply',"${env.HOME}/test2/aws")
+                    callTerraform('destroy',"${env.HOME}/test2/aws")
                     sh "rm -rf ${env.HOME}/test2"
                 }
             }
