@@ -20,22 +20,21 @@ pipeline {
             }
             steps {
                 script {
-                    echo "HOURS123: ${params.HOURS}"
-                    callLoop(15)
-                    jobResult = build job: 'job2',
-                        propagate: false,
-                        parameters: [
-                            string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
-                        ]
-                    echo "jobResult: ${jobResult.result}"
+                    echo "WEB_SERVER_NAME: ${params.WEB_SERVER_NAME}"
+                    // jobResult = build job: 'job2',
+                    //     propagate: false,
+                    //     parameters: [
+                    //         string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
+                    //     ]
+                    // echo "jobResult: ${jobResult.result}"
                     sh "pwd"
                     echo "envHome = ${env.HOME}"
-                    sh "mkdir ${env.HOME}/test2"
-                    sh "cp -R terraform/aws ${env.HOME}/test2"
-                    def data = callTerraform('apply',"${env.HOME}/test2/aws")
+                    sh "mkdir ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
                     echo "${data['ip_address']}"
                     callTerraform('destroy',"${env.HOME}/test2/aws")
-                    sh "rm -rf ${env.HOME}/test2"
+                    sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
                 }
             }
         }

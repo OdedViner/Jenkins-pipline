@@ -1,5 +1,3 @@
-@Library('utils') import org.parameters.parameters
-
 def job = pipelineJob('job1') {
     displayName('job1')
     definition {
@@ -21,7 +19,6 @@ def job = pipelineJob('job1') {
   
     }
     parameters {
-        stringParam('HOURS', '12', 'Maximum running time')
-        parameters.registry_image delegate
+        stringParam('WEB_SERVER_NAME', 'web_server1', 'The web server name')
     }
 }

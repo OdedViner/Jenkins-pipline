@@ -5,7 +5,7 @@ resource "aws_instance" "web-server" {
   key_name               = "vprofile-ci-key"
   vpc_security_group_ids = ["sg-0176ab700b37d1b4c"]
   tags = {
-    Name = "web"
+    Name = var.web_name
   }
 }
 

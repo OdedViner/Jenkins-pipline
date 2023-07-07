@@ -6,6 +6,10 @@ variable "ZONE1" {
   default = "us-east-1c"
 }
 
+variable "web_name" {
+  default = "web_server"
+}
+
 variable "AMIS" {
   type = map(any)
   default = {
