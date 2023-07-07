@@ -31,9 +31,9 @@ pipeline {
                     echo "envHome = ${env.HOME}"
                     sh "mkdir ${env.HOME}/${params.WEB_SERVER_NAME}"
                     sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+                    def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws",${params.WEB_SERVER_NAME})
                     echo "${data['ip_address']}"
-                    callTerraform('destroy',"${env.HOME}/test2/aws")
+                    callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
                     sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
                 }
             }
