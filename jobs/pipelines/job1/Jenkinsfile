@@ -24,6 +24,7 @@ pipeline {
                         ]
                     echo "jobResult: ${jobResult.result}"
                     sh "pwd"
+                    echo "envHome = ${env.HOME}"
                 }
             }
         }
