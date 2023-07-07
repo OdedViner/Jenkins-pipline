@@ -8,3 +8,11 @@ __pycache__
 *egg*
 ven*
 .vscode
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+*.lock.hcl*
