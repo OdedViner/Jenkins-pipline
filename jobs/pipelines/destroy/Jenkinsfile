@@ -1,0 +1,24 @@
+//https://www.jenkins.io/doc/book/pipeline/shared-libraries/
+//https://www.tutorialworks.com/jenkins-shared-library/
+@Library('pipeline-library') _
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Destroy Instance') {
+            agent {
+                node {
+                    label 'slave'
+                }
+            }
+            steps {
+                script {
+                    callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+                    sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
+                }
+            }
+        }
+    }
+}
