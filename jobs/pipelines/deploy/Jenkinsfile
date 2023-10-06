@@ -34,8 +34,11 @@ pipeline {
         always {
             node("slave") {
                 script {
-                    callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                    sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    if (params.RUN_TEARDOWN) {
+                        echo "RUN_TEARDOWN is true"
+                        callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
+                        sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    }
                 }
             }
         }
