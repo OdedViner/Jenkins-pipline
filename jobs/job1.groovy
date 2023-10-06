@@ -20,5 +20,6 @@ def job = pipelineJob('job1') {
     }
     parameters {
         stringParam('WEB_SERVER_NAME', 'web_server1', 'The web server name')
+        booleanParam('RUN_TEARDOWN', true, 'Destroy the web server')
     }
 }
