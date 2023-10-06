@@ -23,7 +23,7 @@ pipeline {
                     echo "WEB_SERVER_NAME: ${params.WEB_SERVER_NAME}"
                     echo "RUN_TEARDOWN: ${params.RUN_TEARDOWN}"
                     if (params.RUN_TEARDOWN) {
-                        echo "RUN_TEARDOWN is true"
+                        echo "RUN_TEARDOWN is true11"
                     }
                     // jobResult = build job: 'job2',
                     //     propagate: false,
