@@ -24,8 +24,6 @@ pipeline {
                     echo "RUN_TEARDOWN: ${params.RUN_TEARDOWN}"
                     if (params.RUN_TEARDOWN) {
                         echo "RUN_TEARDOWN is true"
-                    } else {
-                        echo "RUN_TEARDOWN is false"
                     }
                     // jobResult = build job: 'job2',
                     //     propagate: false,
