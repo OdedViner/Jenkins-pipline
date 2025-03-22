@@ -12,51 +12,5 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Test') {
-            agent {
-                node {
-                    label 'slave'
-                }
-            }
-            steps {
-                script {
-                    echo "WEB_SERVER_NAME: ${params.WEB_SERVER_NAME}"
-                    echo "RUN_TEARDOWN: ${params.RUN_TEARDOWN}"
-                    if (params.RUN_TEARDOWN) {
-                        echo "RUN_TEARDOWN is true11"
-                    }
-                    // jobResult = build job: 'job2',
-                    //     propagate: false,
-                    //     parameters: [
-                    //         string(name: 'HOURS', value: String.valueOf("${params.HOURS}")),
-                    //     ]
-                    // echo "jobResult: ${jobResult.result}"
-                    // sh "pwd"
-                    // echo "envHome = ${env.HOME}"
-                    // sh "mkdir ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    // sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    // def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws","${params.WEB_SERVER_NAME}")
-                    // echo "${data['ip_address']}"
-                    // callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                    // sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-    post {
-        always {
-            node("slave") {
-                script {
-                    echo "oded"
-                    // callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                    // sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
-                }
-            }
-        }
     }
 }
