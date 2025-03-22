@@ -2,7 +2,7 @@
 //https://www.tutorialworks.com/jenkins-shared-library/
 @Library('pipeline-library') _
 
-
+def vars = [:]
 pipeline {
     agent any
 
@@ -10,6 +10,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                vars.job_type = "job1_type"
+                setDescription(vars)
             }
         }
     }

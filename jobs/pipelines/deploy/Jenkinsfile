@@ -8,11 +8,6 @@ pipeline {
 
     stages {
         stage('Build Instance') {
-            agent {
-                node {
-                    label 'slave'
-                }
-            }
             steps {
                 script {
                     echo "WEB_SERVER_NAME: ${params.WEB_SERVER_NAME}"
@@ -27,19 +22,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-            }
-        }
-    }
-    post {
-        always {
-            node("slave") {
-                script {
-                    if (params.RUN_TEARDOWN) {
-                        echo "RUN_TEARDOWN is true"
-                        callTerraform('destroy',"${env.HOME}/${params.WEB_SERVER_NAME}/aws")
-                        sh "rm -rf ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    }
-                }
             }
         }
     }
