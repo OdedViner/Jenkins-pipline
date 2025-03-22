@@ -9,9 +9,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                vars.job_type = "job1_type"
-                setDescription(vars)
+                script {
+                    echo 'Building..'
+                    vars.job_type = "job1_type"
+                    setDescription(vars)
+                }
             }
         }
     }
