@@ -11,17 +11,19 @@ pipeline {
             steps {
                 script {
                     echo "WEB_SERVER_NAME: ${params.WEB_SERVER_NAME}"
-                    echo "envHome = ${env.HOME}"
-                    sh "mkdir ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
-                    def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws","${params.WEB_SERVER_NAME}")
-                    echo "${data['ip_address']}"
+                    // echo "envHome = ${env.HOME}"
+                    // sh "mkdir ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    // sh "cp -R terraform/aws ${env.HOME}/${params.WEB_SERVER_NAME}"
+                    // def data = callTerraform('apply',"${env.HOME}/${params.WEB_SERVER_NAME}/aws","${params.WEB_SERVER_NAME}")
+                    // echo "${data['ip_address']}"
                 }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                script {
+                    echo 'Deploying....'
+                }
             }
         }
     }
